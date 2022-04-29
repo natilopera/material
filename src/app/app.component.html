@@ -1,7 +1,37 @@
-<mat-form-field class="example-form-field" appearance="fill">
-  <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
-  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<button (click)="abrir()">Abrir</button>
+
+<mat-table [dataSource]="tabla" class="mat-elevation-z8" *ngIf="tabla.length > 0"> 
+    <!-- Position Column -->
+    <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef> TIPO </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Tipo}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="marca">
+        <mat-header-cell *matHeaderCellDef> MARCA </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Marca}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="modelo">
+        <mat-header-cell *matHeaderCellDef> MODELO </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.Modelo}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="serie">
+        <mat-header-cell *matHeaderCellDef> CÓDIGO ALFANUMÉRICO </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Serie}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="detalles">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <button mat-raised-button matTooltip="Ver más"> <i
+                    class="material-icons">search</i> </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

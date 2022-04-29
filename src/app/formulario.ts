@@ -1,0 +1,31 @@
+export class datos {
+    constructor (
+        public asignado?: string,
+        public modelo?: string,
+        public serie?: string,
+        public sistemaoperativo?: string,
+        public cargador?: string,
+        public teclado?: string,
+        public mouse?: string,
+        public monitor?: string,
+        public email?: string,
+        public numerotelefonico?: string,
+        public auriculares?: string,
+        public marca?: string,
+        public control?: string,
+        public accesorios?: string,
+        public descripcion?: string,
+        public referencia?: string,
+        public marcadeaccesorios?: string,
+        public numerodeserie?: string,
+        public marcateclado?: string,   
+        public referenciateclado?: string,
+        public numeroserieteclado?: string,
+        public marcamouse?: string,
+        public referenciamouse?: string, 
+        public numeroseriemouse?: string, 
+        public marcamonitor?: string, 
+        public referenciamonitor?: string,   
+        public numeroseriemonitor?: string
+        ) {}
+}

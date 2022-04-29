@@ -1,0 +1,212 @@
+<h1>EQUIPOS ACTIVOS</h1>
+<hr>
+
+<ul class="list">
+  <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
+    <ng-container>
+
+      <div>
+        <mat-form-field>
+          <label class="col-sm-3 col-form-label">Seleccione el tipo de equipo: </label>
+          <mat-select (selectionChange)="selection($event)" name="select">
+            <mat-option value="Computador">Computador</mat-option>
+            <mat-option value="Celular">Celular</mat-option>
+            <mat-option value="Impresora">Impresora</mat-option>
+            <mat-option value="Televisor">Televisor</mat-option>
+            <mat-option value="Escáner">Escáner</mat-option>
+            <mat-option value="Monitor">Monitor</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <div class="row">
+        <h2>{{ titulo }}</h2>
+
+        <div class="col">
+
+
+          <form [formGroup]="formulario" autocomplete="off">
+
+            <div *ngIf="asignado" class="example-min-width">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" name="asignado" formControlName="asignado">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="marca" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Marca del equipo</mat-label>
+                <input matInput type="text" name="marca" formControlName="marca">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="modelo" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Modelo del equipo</mat-label>
+                <input matInput type="text" name="modelo" formControlName="modelo">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="email" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" name="email" formControlName="email">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="numerotelefonico" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Número de télefono</mat-label>
+                <input matInput type="text" name="numerotelefonico" formControlName="numerotelefonico">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="serie" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Código alfanumérico del equipo</mat-label>
+                <input matInput type="text" name="serie" formControlName="serie">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="sistemaoperativo" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Sistema operativo que utiliza su equipo</mat-label>
+                <input matInput type="text" name="sistemaoperativo" formControlName="sistemaoperativo">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="descripcion" class="mb-5 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput name="descripcion" formControlName="descripcion"
+                  placeholder="Descripción..."></textarea>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="accesorios" class="row">
+              <div class="row">
+                <h3>Accesorios:</h3>
+              </div>
+            </div>
+
+            <div *ngIf="control" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Código alfanumérico del control</mat-label>
+                <input matInput type="text" name="control" formControlName="control">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="cargador" class="mb-3 row">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Código alfanumérico del cargador</mat-label>
+                <input matInput type="text" name="cargador" formControlName="cargador">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="teclado" class="row">
+              <div class="row">
+                <h3>Teclado:</h3>
+              </div>
+            </div>
+
+            <div *ngIf="marcateclado" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcateclado" formControlName="marcateclado">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="referenciateclado" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciateclado" formControlName="referenciateclado">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="numeroserieteclado" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroserieteclado" formControlName="numeroserieteclado">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="mouse" class="row">
+              <div class="row">
+                <h3>Mouse:</h3>
+              </div>
+            </div>
+
+            <div *ngIf="marcamouse" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcamouse" formControlName="marcamouse">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="referenciamouse" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciamouse" formControlName="referenciamouse">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="numeroseriemouse" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroseriemouse" formControlName="numeroseriemouse">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="mouse" class="row">
+              <div class="row">
+                <h3>Monitor:</h3>
+              </div>
+            </div>
+
+            <div *ngIf="marcamonitor" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcamonitor" formControlName="marcamonitor">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="referenciamonitor" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciamonitor" formControlName="referenciamonitor">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="numeroseriemonitor" class="mb-3- row">
+              <mat-form-field class="example-form" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroseriemonitor" formControlName="numeroseriemonitor">
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="auriculares" class="mb-3 row">
+              <section class="example-section">
+                <h4>Auriculares:</h4>
+                <p>
+                  <mat-checkbox formControlName="auriculares">Si</mat-checkbox>
+                </p>
+                <p>
+                  <mat-checkbox formControlName="auriculares">No</mat-checkbox>
+                </p>
+              </section>
+            </div>
+
+            <div *ngIf="boton" class="row">
+              <section>
+                <div class="example-button-row">
+                  <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+                </div>
+              </section>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
+</ul>
