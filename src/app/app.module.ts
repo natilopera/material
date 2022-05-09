@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent, ModalFormulario } from './app.component';
+import { AppComponent, ModalDetalles, ModalFormulario } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -16,7 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormularioService } from './services/formulario.service';
 import { InventarioformularioComponent } from './inventarioformulario/inventarioformulario.component';
-import { MatTableModule } from '@angular/material/table'
+import { MatCell, MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ModalFormulario,
     InventarioformularioComponent,
-
+    ModalDetalles
   ],
 
   imports: [
@@ -47,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     ScrollingModule,
     MatTableModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
 
   providers: [

@@ -8,7 +8,7 @@
       <div>
         <mat-form-field>
           <label class="col-sm-3 col-form-label">Seleccione el tipo de equipo: </label>
-          <mat-select (selectionChange)="selection($event)" name="select">
+          <mat-select (selectionChange)="selection($event)">
             <mat-option value="Computador">Computador</mat-option>
             <mat-option value="Celular">Celular</mat-option>
             <mat-option value="Impresora">Impresora</mat-option>
@@ -33,7 +33,7 @@
                 <mat-label>Nombre</mat-label>
                 <input matInput type="text" name="asignado" formControlName="asignado">
               </mat-form-field>
-            </div>
+            </div> 
 
             <div *ngIf="marca" class="mb-3 row">
               <mat-form-field class="example-full-width" appearance="fill">

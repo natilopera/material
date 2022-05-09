@@ -1,0 +1,183 @@
+<div fxLayoutAlign="start center">
+    <button mat-raised-button matTooltip="Regresar" color="primary" (click)="regresar()">
+        <mat-icon>
+            reply
+        </mat-icon>
+    </button>&nbsp;
+    <button mat-raised-button matTooltip="Editar" class="light-blue-600 light-blue-600-fg" (click)="editar() ">
+        <mat-icon>edit</mat-icon>
+    </button> &nbsp;
+    <!-- <button mat-raised-button matTooltip="Imprimir" color="primary" styleSheetFile="assets/styles/css/prestamo.css"
+        printSectionId="formato-print" ngxPrint>
+        <mat-icon>print</mat-icon>
+    </button>
+    &nbsp; -->
+    <button mat-raised-button matTooltip="Guardar" color="primary" (click)="modificar()">
+        <mat-icon>save</mat-icon>
+    </button>
+</div>
+<hr>
+
+
+<ul class="list">
+    <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
+        <ng-container>
+
+
+            <div>
+
+                <h3>Información del equipo registrado: </h3>
+
+            </div>
+
+            <form [formGroup]="formulario" autocomplete="off">
+
+
+            <mat-form-field *ngIf="asignado" class="size-detalles" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" name="asignado" formControlName="asignado"  value=" {{ tabla.Asignado }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="marca" class="size-detalles" appearance="fill">
+                <mat-label>Marca del equipo</mat-label>
+                <input matInput type="text" name="marca" formControlName="marca"  value=" {{ tabla.Marca }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="modelo" class="size-detalles" appearance="fill">
+                <mat-label>Modelo del equipo </mat-label>
+                <input matInput type="text" name="modelo"  formControlName="modelo" value=" {{ tabla.Modelo }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="email" class="size-detalles" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" name="email"  formControlName="email" value=" {{ tabla.Email }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="numerotelefonico" class="size-detalles" appearance="fill">
+                <mat-label>Número de télefono</mat-label>
+                <input matInput type="text" name="numerotelefonico"  formControlName="numerotelefonico" value=" {{ tabla.NumeroTelefonico }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="serie" class="size-detalles" appearance="fill">
+                <mat-label>Código alfanumérico del equipo</mat-label>
+                <input matInput type="text" name="serie" formControlName="serie" value=" {{ tabla.Serie }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="sistemaoperativo" class="size-detalles" appearance="fill">
+                <mat-label>Sistema operativo que utiliza su equipo</mat-label>
+                <input matInput type="text" name="sistemaoperativo" formControlName="sistemaoperativo" value=" {{ tabla.SistemaOperativo }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="descripcion" class="size-descripcion" appearance="fill">
+                <textarea matInput name="descripcion" formControlName="descripcion" placeholder="Descripción..." value=" {{ tabla.Descripcion }} "></textarea>
+            </mat-form-field>
+
+            <div *ngIf="accesorios">
+                <h3>Accesorios:</h3>
+            </div>
+
+            <mat-form-field *ngIf="control" class="size-detalles" appearance="fill">
+                <mat-label>Código alfanumérico del control</mat-label>
+                <input matInput type="text" name="control" formControlName="control"  value=" {{ tabla.Control }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="cargador" class="size-detalles" appearance="fill">
+                <mat-label>Código alfanumérico del cargador</mat-label>
+                <input matInput type="text" name="cargador" formControlName="cargador" value=" {{ tabla.Cargador }} ">
+            </mat-form-field>
+
+            <div *ngIf="teclado">
+                <h4>Teclado:</h4>
+            </div>
+
+            <mat-form-field *ngIf="marcateclado" class="size-detalles" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcateclado" formControlName="marcateclado" value=" {{ tabla.MarcaTeclado }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="referenciateclado" class="size-detalles" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciateclado" formControlName="referenciateclado" value=" {{ tabla.ReferenciaTeclado }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="numeroserieteclado" class="size-detalles" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroserieteclado" formControlName="numeroserieteclado" value=" {{ tabla.NumeroserieTeclado }} ">
+            </mat-form-field>
+
+            <div *ngIf="mouse">
+                <h4>Mouse:</h4>
+            </div>
+
+            <mat-form-field *ngIf="marcamouse" class="size-detalles" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcamouse" formControlName="marcamouse" value=" {{ tabla.MarcaMouse }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="referenciamouse" class="size-detalles" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciamouse" formControlName="referenciamouse" value=" {{ tabla.ReferenciaMouse }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="numeroseriemouse" class="size-detalles" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroseriemouse" formControlName="numeroseriemouse" value=" {{ tabla.NumeroserieMouse }} ">
+            </mat-form-field>
+
+            <div *ngIf="mouse">
+                <h4>Monitor:</h4>
+            </div>
+
+            <mat-form-field *ngIf="marcamonitor" class="size-detalles" appearance="fill">
+                <mat-label>Marca</mat-label>
+                <input matInput type="text" name="marcamonitor" formControlName="marcamonitor" value=" {{ tabla.MarcaMonitor }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="referenciamonitor" class="size-detalles" appearance="fill">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" name="referenciamonitor" formControlName="referenciamonitor" value=" {{ tabla.ReferenciaMonitor }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="numeroseriemonitor" class="size-detalles" appearance="fill">
+                <mat-label>Número de serie</mat-label>
+                <input matInput type="text" name="numeroseriemonitor" formControlName="numeroseriemonitor" value=" {{ tabla.NumeroserieMonitor }} ">
+            </mat-form-field>
+
+            <div *ngIf="auriculares">
+                <h4>Auriculares:</h4>
+            
+
+            <mat-checkbox formControlName="auriculares" value=" {{ tabla.Auriculares }} ">Si</mat-checkbox>
+            <p>
+                <mat-checkbox formControlName="auriculares" >No</mat-checkbox>
+            </p>
+        </div>
+        </form>
