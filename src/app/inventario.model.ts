@@ -24,6 +24,12 @@ export class Inventario {
         public numeroseriemouse?: string,
         public marcamonitor?: string,
         public referenciamonitor?: string,
-        public numeroseriemonitor?: string
+        public numeroseriemonitor?: string,
+        public ram?: string,
+        public discoduro?: string,
+        public nombredeldispositivo?: string,
+        public ranurasdisponibles?: string,
+        public procesador?: string,
+        public tarjetagrafica?: string
     ) {}
 }

@@ -12,7 +12,7 @@
         <mat-icon>print</mat-icon>
     </button>
     &nbsp; -->
-    <button mat-raised-button matTooltip="Guardar" color="primary" (click)="modificar()">
+    <button mat-raised-button matTooltip="Guardar" color="primary" (click)="guardar()">
         <mat-icon>save</mat-icon>
     </button>
 </div>
@@ -26,7 +26,7 @@
 
             <div>
 
-                <h3>Información del equipo registrado: </h3>
+                <h3>Información del equipo registrado: {{nombres['nombre']}} </h3>
 
             </div>
 
@@ -34,8 +34,8 @@
 
 
             <mat-form-field *ngIf="asignado" class="size-detalles" appearance="fill">
-                <mat-label>Nombre</mat-label>
-                <input matInput type="text" name="asignado" formControlName="asignado"  value=" {{ tabla.Asignado }} ">
+                <mat-label>Nombre </mat-label>
+                <input matInput type="text" name="asignado" formControlName="asignado"  value="{{tabla.Asignado.nombre}} ">
             </mat-form-field>
 
 
@@ -82,6 +82,49 @@
 
 
 
+            <mat-form-field *ngIf="ram" class="size-detalles" appearance="fill">
+                <mat-label>RAM del equipo</mat-label>
+                <input matInput type="text" name="ram" formControlName="ram" value=" {{ tabla.Ram }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="discoduro" class="size-detalles" appearance="fill">
+                <mat-label>Disco duro del equipo</mat-label>
+                <input matInput type="text" name="discoduro" formControlName="discoduro" value=" {{ tabla.DiscoDuro }} ">
+            </mat-form-field> 
+
+
+
+
+            <mat-form-field *ngIf="nombredeldispositivo" class="size-detalles" appearance="fill">
+                <mat-label>Nombre del dispositivo</mat-label>
+                <input matInput type="text" name="nombredeldispositivo" formControlName="nombredeldispositivo" value=" {{ tabla.NombreDelDispositivo }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="ranurasdisponibles" class="size-detalles" appearance="fill">
+                <mat-label>Ranuras disponibles en el equipo</mat-label>
+                <input matInput type="text" name="ranurasdisponibles" formControlName="ranurasdisponibles" value=" {{ tabla.RanurasDisponibles }} ">
+            </mat-form-field>
+
+
+
+            <mat-form-field *ngIf="procesador" class="size-detalles" appearance="fill">
+                 <mat-label>Procesador del equipo</mat-label>
+                <input matInput type="text" name="procesador" formControlName="procesador" value=" {{ tabla.Procesador }} ">
+            </mat-form-field>
+
+
+            
+            <mat-form-field *ngIf="tarjetagrafica" class="size-detalles" appearance="fill">
+                <mat-label>Tarjeta gráfica</mat-label>
+                <input matInput type="text" name="tarjetagrafica" formControlName="tarjetagrafica" value=" {{ tabla.TarjetaGrafica }} ">
+            </mat-form-field>
+
+
+
             <mat-form-field *ngIf="descripcion" class="size-descripcion" appearance="fill">
                 <textarea matInput name="descripcion" formControlName="descripcion" placeholder="Descripción..." value=" {{ tabla.Descripcion }} "></textarea>
             </mat-form-field>
@@ -98,7 +141,7 @@
 
 
             <mat-form-field *ngIf="cargador" class="size-detalles" appearance="fill">
-                <mat-label>Código alfanumérico del cargador</mat-label>
+                <mat-label>Modelo del cargador</mat-label>
                 <input matInput type="text" name="cargador" formControlName="cargador" value=" {{ tabla.Cargador }} ">
             </mat-form-field>
 
@@ -148,7 +191,7 @@
                 <input matInput type="text" name="numeroseriemouse" formControlName="numeroseriemouse" value=" {{ tabla.NumeroserieMouse }} ">
             </mat-form-field>
 
-            <div *ngIf="mouse">
+            <div *ngIf="monitor">
                 <h4>Monitor:</h4>
             </div>
 

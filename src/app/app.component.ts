@@ -16,12 +16,18 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: '1. Computador' },
-  { position: 2, name: '2. Celular' },
-  { position: 3, name: '3. Impresora' },
-  { position: 4, name: '4. Televisor' },
-  { position: 5, name: '5. Escáner' },
-  { position: 6, name: '6. Monitor' }
+  
+  { position: 1, name: '1. Laptop'},
+  { position: 2, name: '2. Torre'},
+  { position: 3, name: '3. Monitor' },
+  { position: 4, name: '4. Teclado'},
+  { position: 5, name: '5. Mouse'},
+  { position: 6, name: '6. Speakers'},
+  { position: 7, name: '7. Cámara'},
+  { position: 8, name: '8. Celular' },
+  { position: 9, name: '9. Impresora' },
+  { position: 10, name: '10. Televisor' },
+  { position: 11, name: '11. Escáner' }
 ];
 
 @Component({
@@ -131,7 +137,16 @@ export class ModalDetalles {
   marcamonitor = false
   referenciamonitor = false
   numeroseriemonitor = false
+  ram = false
+  discoduro= false
+  nombredeldispositivo = false
+  ranurasdisponibles = false 
+  procesador = false 
+  tarjetagrafica = false
+ 
+
   titulo = "";
+  nombres = [];
 
   title = 'prueba';
   tipo = '';
@@ -193,6 +208,12 @@ export class ModalDetalles {
     registro.marcamonitor  = this.formulario.value.marcamonitor;
     registro.referenciamonitor  = this.formulario.value.referenciamonitor;
     registro.numeroseriemonitor  = this.formulario.value.numeroseriemonitor;
+    registro.ram = this.formulario.value.ram;
+    registro.discoduro = this.formulario.value.discoduro;
+    registro.nombredeldispositivo = this.formulario.value.nombredeldispositivo;
+    registro.ranurasdisponibles = this.formulario.value.ranurasdisponibles;
+    registro.procesador = this.formulario.value.procesador;
+    registro.tarjetagrafica = this.formulario.value.tarjetagrafica;
 
     return registro;
 
@@ -201,29 +222,27 @@ export class ModalDetalles {
   guardar() {
 
     const registro = this.llenar1();
-
-    console.log('nalgon' , registro);
     
-  // this._formularioServicee.crearinventario(registro)
-  //     .subscribe((inventario: any) => {
-  //       Swal.fire({
-  //         title: '¡Enhorabuena!',
-  //         text: 'El registro fue enviado exitosamente',
-  //         icon: 'success',
-  //         confirmButtonText: 'Ok'
-  //       })
+  this._formularioServicee.actualizarinventario(registro, this.data.id)
+      .subscribe((inventario: any) => {
+        Swal.fire({
+          title: '¡Enhorabuena!',
+          text: 'El registro fue enviado exitosamente',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
 
-  //       console.log(inventario);
-  //       this.dialogRef.close(inventario.inventario);
-  //     }, (error) => {
-  //       console.error("ha ocurrido un error", error.error);
-  //       Swal.fire({
-  //         title: '¡Error!',
-  //         text: error.error.mensaje,
-  //         icon: 'error',
-  //         confirmButtonText: 'Ok'
-  //       })
-  //     })
+        console.log(inventario);
+        this.dialogRef.close(inventario.inventario);
+      }, (error) => {
+        console.error("ha ocurrido un error", error.error);
+        Swal.fire({
+          title: '¡Error!',
+          text: error.error.mensaje,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      })
     }
 
     selection(e: any) {
@@ -237,36 +256,269 @@ export class ModalDetalles {
 
       switch (seleccionado) {
 
-        case 'Computador':
+        case 'Laptop':
           this.asignado = true;
           this.modelo = true;
           this.serie = true;
           this.sistemaoperativo = true;
           this.accesorios = true;
           this.cargador = true;
-          this.teclado = true;
-          this.mouse = true;
-          this.monitor = true;
+          this.teclado = false;
+          this.mouse = false;
+          this.monitor = false;
           this.boton = true;
           this.email = false;
           this.auriculares = false;
           this.descripcion = true;
           this.marca = true;
           this.referencia = true;
-          this.marcadeaccesorios = true;
-          this.numerodeserie = true;
-          this.marcateclado = true;
-          this.referenciateclado = true;
-          this.numeroserieteclado = true;
-          this.marcamouse = true;
-          this.referenciamouse = true;
-          this.numeroseriemouse = true;
-          this.marcamonitor = true;
-          this.referenciamonitor = true;
-          this.numeroseriemonitor = true;
+          this.marcadeaccesorios = false;
+          this.numerodeserie = false;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
           this.control = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.ram = true;
+          this.discoduro = true;
+          this.nombredeldispositivo = true;
+          this.ranurasdisponibles = true;
+          this.procesador = true;
+          this.tarjetagrafica = true;
           break;
+
+          case 'Torre':
+            this.asignado = true;
+            this.modelo = true;
+            this.serie = true;
+            this.sistemaoperativo = true;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.marca = true;
+            this.control = false;
+            this.accesorios = false;
+            this.boton = false;
+            this.descripcion = true;
+            this.referencia = true;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this. referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = true;
+            this.discoduro = true;
+            this.nombredeldispositivo = true;
+            this.ranurasdisponibles = true;
+            this.procesador = true;
+            this.tarjetagrafica = true;
+          break;
+
+          case 'Monitor':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
   
+            case 'Teclado':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+
+            case 'Mouse':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+
+            case 'Speakers':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+
+            case 'Cámara':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+      
         case 'Celular':
           this.asignado = true;
           this.modelo = true;
@@ -294,7 +546,14 @@ export class ModalDetalles {
           this.marcamonitor = false;
           this.referenciamonitor = false;
           this.numeroseriemonitor = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.tarjetagrafica = false;
           break;
+       
   
         case 'Impresora':
           this.modelo = true;
@@ -319,6 +578,12 @@ export class ModalDetalles {
           this.marcamonitor = false;
           this.referenciamonitor = false;
           this.numeroseriemonitor = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.tarjetagrafica = false;
           break;
   
         case 'Televisor':
@@ -338,6 +603,12 @@ export class ModalDetalles {
           this.marcamonitor = false;
           this.referenciamonitor = false;
           this.numeroseriemonitor = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.tarjetagrafica = false;
           break;
   
         case 'Escáner':
@@ -357,38 +628,15 @@ export class ModalDetalles {
           this.marcamonitor = false;
           this.referenciamonitor = false;
           this.numeroseriemonitor = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.tarjetagrafica = false;
           break;
   
-        case 'Monitor':
-          this.marca = true;
-          this.modelo = true;
-          this.serie = true;
-          this.descripcion = true;
-          this.boton = true;
-          this.accesorios = false;
-          this.control = false;
-          this.asignado = true;
-          this.sistemaoperativo = false;
-          this.cargador = false;
-          this.teclado = false;
-          this.mouse = false;
-          this.monitor = false;
-          this.email = false;
-          this.numerotelefonico = false;
-          this.auriculares = false;
-          this.referencia = false;
-          this.marcadeaccesorios = false;
-          this.numerodeserie = false;
-          this.marcateclado = false;
-          this.referenciateclado = false;
-          this.numeroserieteclado = false;
-          this.marcamouse = false;
-          this.referenciamouse = false;
-          this.numeroseriemouse = false;
-          this.marcamonitor = false;
-          this.referenciamonitor = false;
-          this.numeroseriemonitor = false;
-          break;
+        
       }
     }  
 
@@ -422,6 +670,11 @@ export class ModalDetalles {
         console.log('inventario', respuesta);
         this.tabla = respuesta.inventario;
         console.log(this.tabla);
+        this.nombres = this.tabla.Asignado;
+        console.log('sebas', this.nombres);
+        console.log('nombre');
+        
+        
         if (respuesta.inventario === null) {
           
         } else {
@@ -459,6 +712,12 @@ export class ModalDetalles {
           marcamonitor: new FormControl(respuesta.inventario.MarcaMonitor , Validators.required),
           referenciamonitor: new FormControl(respuesta.inventario.ReferenciaMonitor , Validators.required),
           numeroseriemonitor: new FormControl(respuesta.inventario.NumeroserieMonitor , Validators.required),
+          ram: new FormControl(respuesta.inventario.Ram , Validators.required),
+          discoduro: new FormControl(respuesta.inventario.DiscoDuro , Validators.required),
+          nombredeldispositivo: new FormControl(respuesta.inventario.NombreDelDispositivo , Validators.required),
+          ranurasdisponibles: new FormControl(respuesta.inventario.RanurasDisponibles , Validators.required),
+          procesador: new FormControl(respuesta.inventario.Procesador , Validators.required),
+          tarjetagrafica: new FormControl(respuesta.inventario.TarjetaGrafica , Validators.required)
         })
 
         
@@ -510,6 +769,13 @@ export class ModalFormulario {
   marcamonitor = false
   referenciamonitor = false
   numeroseriemonitor = false
+  ram = false
+  discoduro= false
+  nombredeldispositivo = false
+  ranurasdisponibles = false 
+  procesador = false 
+  tarjetagrafica = false
+  disponibles = "";
   titulo = "";
 
   title = 'prueba';
@@ -558,6 +824,12 @@ export class ModalFormulario {
       marcamonitor: new FormControl(''),
       referenciamonitor: new FormControl(''),
       numeroseriemonitor: new FormControl(''),
+      ram: new FormControl(''),
+      discoduro: new FormControl(''),
+      nombredeldispositivo: new FormControl(''),
+      ranurasdisponibles: new FormControl(''),
+      procesador: new FormControl(''),
+      tarjetagrafica: new FormControl('')
     })
   }
 
@@ -603,8 +875,20 @@ export class ModalFormulario {
     registro.marcamonitor  = this.formulario.value.marcamonitor;
     registro.referenciamonitor  = this.formulario.value.referenciamonitor;
     registro.numeroseriemonitor  = this.formulario.value.numeroseriemonitor;
-
+    registro.ram = this.formulario.value.ram;
+    registro.discoduro = this.formulario.value.discoduro;
+    registro.nombredeldispositivo = this.formulario.value.nombredeldispositivo;
+    registro.ranurasdisponibles = this.disponibles;
+    registro.procesador = this.formulario.value.procesador;
+    registro.tarjetagrafica = this.formulario.value.tarjetagrafica;
+    
     return registro;
+
+  }
+
+  ranuras(e) {
+
+    this.disponibles = e.value;
 
   }
 
@@ -612,6 +896,8 @@ export class ModalFormulario {
 
     const registro = this.llenar1();
 
+    console.log('formulari', registro);
+    
   this._formularioService.crearinventario(registro)
       .subscribe((inventario: any) => {
         Swal.fire({
@@ -640,163 +926,395 @@ export class ModalFormulario {
     console.log(seleccionado);
     this.titulo = seleccionado;
 
-    this.tipo = seleccionado;
+    
+    this.tipo = e.value;
+
+    console.log(this.tipo);
+
     this.ocultartodos();
 
     switch (seleccionado) {
 
-      case 'Computador':
-        this.asignado = true;
-        this.modelo = true;
-        this.serie = true;
-        this.sistemaoperativo = true;
-        this.accesorios = true;
-        this.cargador = true;
-        this.teclado = true;
-        this.mouse = true;
-        this.monitor = true;
-        this.boton = true;
-        this.email = false;
-        this.auriculares = false;
-        this.descripcion = true;
-        this.marca = true;
-        this.referencia = true;
-        this.marcadeaccesorios = true;
-        this.numerodeserie = true;
-        this.marcateclado = true;
-        this.referenciateclado = true;
-        this.numeroserieteclado = true;
-        this.marcamouse = true;
-        this.referenciamouse = true;
-        this.numeroseriemouse = true;
-        this.marcamonitor = true;
-        this.referenciamonitor = true;
-        this.numeroseriemonitor = true;
-        this.control = false;
-        break;
+      case 'Laptop':
+          this.asignado = true;
+          this.modelo = true;
+          this.serie = true;
+          this.sistemaoperativo = true;
+          this.accesorios = true;
+          this.cargador = true;
+          this.teclado = false;
+          this.mouse = false;
+          this.monitor = false;
+          this.boton = true;
+          this.email = false;
+          this.auriculares = false;
+          this.descripcion = true;
+          this.marca = true;
+          this.referencia = true;
+          this.marcadeaccesorios = false;
+          this.numerodeserie = false;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
+          this.control = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.ram = true;
+          this.discoduro = true;
+          this.nombredeldispositivo = true;
+          this.ranurasdisponibles = true;
+          this.procesador = true;
+          this.tarjetagrafica = true;
+          break;
 
-      case 'Celular':
-        this.asignado = true;
-        this.modelo = true;
-        this.email = true;
-        this.numerotelefonico = true;
-        this.accesorios = true;
-        this.auriculares = true;
-        this.cargador = true;
-        this.sistemaoperativo = false;
-        this.boton = true;
-        this.teclado = false;
-        this.mouse = false;
-        this.monitor = false;
-        this.descripcion = true;
-        this.marca = true;
-        this.marcadeaccesorios = false;
-        this.numerodeserie = false;
-        this.referencia = false;
-        this.marcateclado = false;
-        this.referenciateclado = false;
-        this.numeroserieteclado = false;
-        this.marcamouse = false;
-        this.referenciamouse = false;
-        this.numeroseriemouse = false;
-        this.marcamonitor = false;
-        this.referenciamonitor = false;
-        this.numeroseriemonitor = false;
-        break;
+          case 'Torre':
+            this.asignado = true;
+            this.modelo = true;
+            this.serie = true;
+            this.sistemaoperativo = true;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.marca = true;
+            this.control = false;
+            this.accesorios = false;
+            this.boton = true;
+            this.descripcion = true;
+            this.referencia = true;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this. referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = true;
+            this.discoduro = true;
+            this.nombredeldispositivo = true;
+            this.ranurasdisponibles = true;
+            this.procesador = true;
+            this.tarjetagrafica = true;
+          break;
 
-      case 'Impresora':
-        this.modelo = true;
-        this.marca = true;
-        this.serie = true;
-        this.descripcion = true;
-        this.boton = true;
-        this.email = false;
-        this.accesorios = false;
-        this.cargador = false;
-        this.sistemaoperativo = false;
-        this.teclado = false;
-        this.monitor = false;
-        this.mouse = false;
-        this.numerodeserie = false;
-        this.marcateclado = false;
-        this.referenciateclado = false;
-        this.numeroserieteclado = false;
-        this.marcamouse = false;
-        this.referenciamouse = false;
-        this.numeroseriemouse = false;
-        this.marcamonitor = false;
-        this.referenciamonitor = false;
-        this.numeroseriemonitor = false;
-        break;
+          case 'Monitor':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+  
+            case 'Teclado':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
 
-      case 'Televisor':
-        this.serie = true;
-        this.marca = true;
-        this.modelo = true;
-        this.descripcion = true;
-        this.boton = true;
-        this.accesorios = true;
-        this.control = true;
-        this.marcateclado = false;
-        this.referenciateclado = false;
-        this.numeroserieteclado = false;
-        this.marcamouse = false;
-        this.referenciamouse = false;
-        this.numeroseriemouse = false;
-        this.marcamonitor = false;
-        this.referenciamonitor = false;
-        this.numeroseriemonitor = false;
-        break;
+            case 'Mouse':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
 
-      case 'Escáner':
-        this.marca = true;
-        this.modelo = true;
-        this.serie = true;
-        this.descripcion = true;
-        this.boton = true;
-        this.accesorios = false;
-        this.control = false;
-        this.marcateclado = false;
-        this.referenciateclado = false;
-        this.numeroserieteclado = false;
-        this.marcamouse = false;
-        this.referenciamouse = false;
-        this.numeroseriemouse = false;
-        this.marcamonitor = false;
-        this.referenciamonitor = false;
-        this.numeroseriemonitor = false;
-        break;
+            case 'Speakers':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
 
-      case 'Monitor':
-        this.marca = true;
-        this.modelo = true;
-        this.serie = true;
-        this.descripcion = true;
-        this.boton = true;
-        this.accesorios = false;
-        this.control = false;
-        this.asignado = true;
-        this.sistemaoperativo = false;
-        this.cargador = false;
-        this.teclado = false;
-        this.mouse = false;
-        this.monitor = false;
-        this.email = false;
-        this.numerotelefonico = false;
-        this.auriculares = false;
-        this.referencia = false;
-        this.marcadeaccesorios = false;
-        this.numerodeserie = false;
-        this.marcateclado = false;
-        this.referenciateclado = false;
-        this.numeroserieteclado = false;
-        this.marcamouse = false;
-        this.referenciamouse = false;
-        this.numeroseriemouse = false;
-        this.marcamonitor = false;
-        this.referenciamonitor = false;
-        this.numeroseriemonitor = false;
-        break;
+            case 'Cámara':
+            this.marca = true;
+            this.modelo = true;
+            this.serie = true;
+            this.descripcion = true;
+            this.boton = true;
+            this.accesorios = false;
+            this.control = false;
+            this.asignado = true;
+            this.sistemaoperativo = false;
+            this.cargador = false;
+            this.teclado = false;
+            this.mouse = false;
+            this.monitor = false;
+            this.email = false;
+            this.numerotelefonico = false;
+            this.auriculares = false;
+            this.referencia = false;
+            this.marcadeaccesorios = false;
+            this.numerodeserie = false;
+            this.marcateclado = false;
+            this.referenciateclado = false;
+            this.numeroserieteclado = false;
+            this.marcamouse = false;
+            this.referenciamouse = false;
+            this.numeroseriemouse = false;
+            this.marcamonitor = false;
+            this.referenciamonitor = false;
+            this.numeroseriemonitor = false;
+            this.ram = false;
+            this.discoduro = false;
+            this.nombredeldispositivo = false;
+            this.ranurasdisponibles = false;
+            this.procesador = false;
+            this.tarjetagrafica = false;
+            break;
+      
+        case 'Celular':
+          this.asignado = true;
+          this.modelo = true;
+          this.email = true;
+          this.numerotelefonico = true;
+          this.accesorios = true;
+          this.auriculares = true;
+          this.cargador = true;
+          this.sistemaoperativo = false;
+          this.boton = true;
+          this.teclado = false;
+          this.mouse = false;
+          this.monitor = false;
+          this.descripcion = true;
+          this.marca = true;
+          this.marcadeaccesorios = false;
+          this.numerodeserie = false;
+          this.referencia = false;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
+          this.ram = false;
+          this.discoduro = false;
+          this.nombredeldispositivo = false;
+          this.ranurasdisponibles = false;
+          this.procesador = false;
+          this.tarjetagrafica = false;
+          break;
+       
+  
+        case 'Impresora':
+          this.modelo = true;
+          this.marca = true;
+          this.serie = true;
+          this.descripcion = true;
+          this.boton = true;
+          this.email = false;
+          this.accesorios = false;
+          this.cargador = false;
+          this.sistemaoperativo = false;
+          this.teclado = false;
+          this.monitor = false;
+          this.mouse = false;
+          this.numerodeserie = false;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
+          this.ram = false;
+        this.discoduro = false;
+        this.nombredeldispositivo = false;
+        this.ranurasdisponibles = false;
+        this.procesador = false;
+        this.tarjetagrafica = false;
+          break;
+  
+        case 'Televisor':
+          this.serie = true;
+          this.marca = true;
+          this.modelo = true;
+          this.descripcion = true;
+          this.boton = true;
+          this.accesorios = true;
+          this.control = true;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
+          this.ram = false;
+        this.discoduro = false;
+        this.nombredeldispositivo = false;
+        this.ranurasdisponibles = false;
+        this.procesador = false;
+        this.tarjetagrafica = false;
+          break;
+  
+        case 'Escáner':
+          this.marca = true;
+          this.modelo = true;
+          this.serie = true;
+          this.descripcion = true;
+          this.boton = true;
+          this.accesorios = false;
+          this.control = false;
+          this.marcateclado = false;
+          this.referenciateclado = false;
+          this.numeroserieteclado = false;
+          this.marcamouse = false;
+          this.referenciamouse = false;
+          this.numeroseriemouse = false;
+          this.marcamonitor = false;
+          this.referenciamonitor = false;
+          this.numeroseriemonitor = false;
+          this.ram = false;
+        this.discoduro = false;
+        this.nombredeldispositivo = false;
+        this.ranurasdisponibles = false;
+        this.procesador = false;
+        this.tarjetagrafica = false;
+          break;
+  
     }
   }
 }

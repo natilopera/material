@@ -9,11 +9,21 @@ import { environment } from '../../environments/environment';
 export class FormularioService {
 
     private baseUrl: string = environment.baseUrl
-    token = '?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJfaWQiOiI2MjY5YmJhYmYxYTBlOTA1M2RjMjViN2UiLCJub21icmUiOiJOQVRBTElBIExPUEVSQSIsImVtYWlsIjoibmF0YWxpYS5sb3BlcmFAcmVhY2Npb25hcmx0ZGEuY29tIiwicGFzc3dvcmQiOiI6KSIsImZlY2hhQ3JlYWNpb24iOiIyMDIyLTA0LTI3VDIxOjU0OjUxLjQyNloiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTI3VDIxOjU0OjUxLjQyNloiLCJfX3YiOjB9LCJpYXQiOjE2NTE4NzYyNDksImV4cCI6MTY1MTkwNTA0OX0.H_lOfIBIL_rGgW-wga8Xua5dHEGIhc-D9rjhuH_NhG0'
+    token = '?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJfaWQiOiI2MjY5YmJhYmYxYTBlOTA1M2RjMjViN2UiLCJub21icmUiOiJOQVRBTElBIExPUEVSQSIsImVtYWlsIjoibmF0YWxpYS5sb3BlcmFAcmVhY2Npb25hcmx0ZGEuY29tIiwicGFzc3dvcmQiOiI6KSIsImZlY2hhQ3JlYWNpb24iOiIyMDIyLTA0LTI3VDIxOjU0OjUxLjQyNloiLCJ1cGRhdGVkQXQiOiIyMDIyLTA0LTI3VDIxOjU0OjUxLjQyNloiLCJfX3YiOjB9LCJpYXQiOjE2NTI3MzQ5ODMsImV4cCI6MTY1Mjc2Mzc4M30.rmM5KV1Px-yvd_KJn1RtQUpcOSbmv8-iEkJ838GfcnA'
     constructor(public http: HttpClient) {
         
         console.log('Servicio Inicializado');
         
+    }
+
+
+    actualizarinventario(inventario: Inventario, id) {
+
+        let url = 'http://138.121.170.119:3001/inventario/' + id;
+        url+= this.token;
+        return this.http.put(url, inventario);
+       
+
     }
 
     obtenerinventario() {
